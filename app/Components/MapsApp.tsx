@@ -29,6 +29,13 @@ function MapsApp() {
       position: [49.4144, -0.8322],
       category: "War",
     }
+    {
+      id: 2,
+      title: "Completion of the Sistine Chapel Ceiling",
+      description: "Michelangelo completed the ceiling of the Sistine CHapel.",
+      position: [41.9029, 12.4545],
+      category: "Art",
+    }
   ];
 
   return  
@@ -41,11 +48,16 @@ function MapsApp() {
     className="map-container"
     >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={defaultPosition} icon={icon}>
+        
+        
+      
+        {eventsData.map((event) => {
+            return  <Marker key={event.id} position={event.position} icon={icon} />
+          })
+        }
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
-        </Marker>
 
     </MapContainer>
   </div>
