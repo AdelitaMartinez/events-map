@@ -1,6 +1,13 @@
-import Image from "next/image";
+"use client";
+
+const MapsApp = dynamic(() => import("./Components/MapsApp"), {
+  ssr: false,
+});
 
 export default function Home() {
-  return
-   <main className="content"></main>;
+  return (
+   <main className ="w-full h-full">
+      <MapsApp />
+   </main>
+  );
 }
