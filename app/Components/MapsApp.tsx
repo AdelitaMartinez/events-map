@@ -2,8 +2,9 @@
 import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import { Icon } from "leaflet";
+import eventsData from "../historyEvents";
 
-interface HistoricalEvent {
+export interface HistoricalEvent {
   id: number;
   title: string;
   description: string;
@@ -21,22 +22,7 @@ function MapsApp() {
     iconAncor: [12,41],
   }); 
 
-  const eventsData: HistoricalEvent[] = [
-    {
-      id: 1,
-      title: "Normandy Landings (D-Day)",
-      description: "Applied force landed on the beaches or Normandy, France on june 6.",
-      position: [49.4144, -0.8322],
-      category: "War",
-    }
-    {
-      id: 2,
-      title: "Completion of the Sistine Chapel Ceiling",
-      description: "Michelangelo completed the ceiling of the Sistine CHapel.",
-      position: [41.9029, 12.4545],
-      category: "Art",
-    }
-  ];
+
 
   return  
   <div className="content">
@@ -52,16 +38,18 @@ function MapsApp() {
         
       
         {eventsData.map((event) => {
-            return  <Marker key={event.id} position={event.position} icon={icon} />
-          })
-        }
-          <Popup>
+            return ( <Marker key={event.id} position={event.position} icon={icon}> 
+            <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
+          </Marker>
+            );
+          })
+        }
+          
 
     </MapContainer>
   </div>
- </div>
 }
 
 export default MapsApp;
